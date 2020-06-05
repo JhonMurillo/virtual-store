@@ -7,10 +7,13 @@ module.exports = {
       const { filter, status = true, offset = 0, limit = 2 } = args;
       let query = { status };
       if (filter) {
-        query['$text'] = { $search: filter };
+        query['$or'] = [
+          { name: { $regex: filter, $options: 'i' } },
+          { description: { $regex: filter, $options: 'i' } },
+        ];
       }
       query = _.omitBy(query, _.isNil);
-      console.log(query, offset, limit);
+
       const stores = await StoreModel.aggregate([
         {
           $match: query,

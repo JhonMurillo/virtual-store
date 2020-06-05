@@ -25,6 +25,8 @@ module.exports = gql`
         slug: String
         phone: String
         address: String
+        description: String
+        rating: Float
         email: String
         website: String
         social_networks: [social_network]
@@ -50,6 +52,7 @@ module.exports = gql`
         email: String!
         website:String
         address: String!
+        description: String!
         social_networks: [socialNetworkInput!]!
     }
 `

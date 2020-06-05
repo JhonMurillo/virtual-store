@@ -37,6 +37,8 @@ export const ListOfStores = () => {
           }
           status
           is_feature
+          description
+          rating
         }
       }
     }
@@ -44,17 +46,23 @@ export const ListOfStores = () => {
 
   const fetch = async ({ offset }) => {
     setLoading(true);
-    const { loading, error, data } = await client.query({
-      query: GET_STORES,
-      variables: { filter, offset, limit: LIMIT },
-      fetchPolicy: 'network-only',
-    });
-    setError(error);
-    setLoading(loading);
-    const { stores: { items, metadata } = {} } = data;
-    setMetadata(metadata);
-    setItems(items);
-    setLoading(loading);
+    setError(null);
+
+    try {
+      const { loading, data } = await client.query({
+        query: GET_STORES,
+        variables: { filter, offset, limit: LIMIT },
+        fetchPolicy: 'network-only',
+      });
+
+      const { stores: { items, metadata } = {} } = data;
+      setMetadata(metadata);
+      setItems(items);
+      setLoading(loading);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -63,6 +71,7 @@ export const ListOfStores = () => {
 
   const onSearch = () => {
     fetch({ offset: 0 });
+    setActivePage(1);
   };
 
   const onGetFilter = (e) => {

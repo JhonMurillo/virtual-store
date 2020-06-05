@@ -4,6 +4,8 @@ import { Container, Row, Col } from 'reactstrap';
 import { CardDiv, CardTitle, CardText } from './styles';
 import { Link } from '@reach/router';
 import { SocialNetwork } from '../SocialNetwork';
+import Rating from 'react-rating';
+import { BsStar, BsStarFill } from 'react-icons/bs';
 
 const default_description =
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
@@ -15,6 +17,7 @@ export const CardStore = ({
   website = default_website,
   social_networks,
   is_feature = true,
+  rating,
 }) => {
   return (
     <>
@@ -24,8 +27,16 @@ export const CardStore = ({
           <Container>
             <Row>
               <Col xs="12">
-              <Link to={`store/${slug}`} title={`store/${slug}`}><CardTitle>{name}</CardTitle></Link>
-                <CardText>{description}</CardText>
+                <Link to={`store/${slug}`} title={`store/${slug}`}>
+                  <CardTitle>{name}</CardTitle>
+                </Link>
+                <Rating
+                  initialRating={rating}
+                  readonly={true}
+                  emptySymbol={<BsStar />}
+                  fullSymbol={<BsStarFill />}
+                />
+                <CardText>{description || default_description}</CardText>
               </Col>
             </Row>
             <hr />
