@@ -11,7 +11,7 @@ const queryTypes =gql`
     type Query {
         products: [product]
         users:[user]
-        stores:[store]
+        stores(filter:String,status:Boolean, offset: Int, limit: Int):result
     }
 `
 const mutationTypes =gql`

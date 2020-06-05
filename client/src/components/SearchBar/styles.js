@@ -8,6 +8,7 @@ export const InputGroup = styled(IG)`
 
 export const Input = styled(I)`
   border-radius: 0;
+  height:40px;
 `
 
 export const Button = styled(B)`

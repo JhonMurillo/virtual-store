@@ -12,7 +12,7 @@ export const NavBar = () => {
     <Navbar fixed='top' sticky='top' expand='md'>
     <Container>
       <Logo />
-      <Collapse navbar>
+      {/* <Collapse navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
             <Link to="/login">Accede</Link>
@@ -21,7 +21,7 @@ export const NavBar = () => {
             <Link to="/signup">Registrate</Link>
           </NavItem>
         </Nav>
-      </Collapse>
+      </Collapse> */}
     </Container>
     </Navbar>
     <Banner showBanner={showBanner}  message='Mensaje informativo!'/>

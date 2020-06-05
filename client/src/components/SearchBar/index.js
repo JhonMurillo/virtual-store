@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { InputGroupAddon } from 'reactstrap';
-import { InputGroup, Input, Button } from "./styles";
-import { BsSearch } from 'react-icons/bs'
+import { InputGroup, Input, Button } from './styles';
+import { BsSearch } from 'react-icons/bs';
 
-export const SearchInput = () => (
-    <InputGroup>
-        <Input placeholder='Busca tu producto Aqui!' />
-        <InputGroupAddon addonType="append">
-            <Button color="secondary" title='Buscar'>
-                <BsSearch />
-            </Button>
-        </InputGroupAddon>
-    </InputGroup>
-)
+export const SearchInput = ({ onClick, onChange }) => (
+  <InputGroup>
+    <Input placeholder="Buscanos aqui!" onChange={onChange}/>
+    <InputGroupAddon addonType="append">
+      <Button color="secondary" title="Buscar" onClick={onClick}>
+        <BsSearch />
+      </Button>
+    </InputGroupAddon>
+  </InputGroup>
+);

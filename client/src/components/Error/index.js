@@ -4,12 +4,13 @@ import { AlertMsg } from './styles';
 
 
 export const Error = ({ showError, message }) => {
+  console.error(message)
   return (
     <>
     { showError && 
       <AlertMsg color='danger'>
         <Container>
-          {message}
+          Lo sentimos a ocurrido un error.
         </Container>
       </AlertMsg>
     }

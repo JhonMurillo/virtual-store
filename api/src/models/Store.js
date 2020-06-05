@@ -8,6 +8,7 @@ const storeSchema = new Schema({
     slug: { type: String,  unique: true, slug: 'name'},
     phone : { type: String, required: true},
     email : { type: String, required: true},
+    website : { type: String },
     address : { type: String, required: true},
     social_networks : [
         { 
@@ -15,6 +16,8 @@ const storeSchema = new Schema({
             link: { type: String, required: true}
         }
     ],
+    rating: { type: Number, default: 0},
+    is_feature: {type: Boolean, default: false},
     status: {type: Boolean, default: true}, 
     created_at : { type:Date, default: new Date}
 });
