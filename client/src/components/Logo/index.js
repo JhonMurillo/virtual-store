@@ -4,7 +4,7 @@ import { Link } from '@reach/router'
 export const Logo = (props) => {
   return (
     <Link to="/">
-        Logo
+        <img src='logo.png' alt='Apóyanos Logo' title='Apóyanos!' />
     </Link>
   )
 }

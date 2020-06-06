@@ -8,7 +8,7 @@ import { SearchInput } from '../components/SearchBar';
 import { ListOfStores as ListOfStoresComponent } from '../components/ListOfStores';
 
 export const ListOfStores = () => {
-  const LIMIT = 2;
+  const LIMIT = 10;
   const client = useApolloClient();
   const [activePage, setActivePage] = useState(1);
   const [filter, setFilter] = useState(undefined);

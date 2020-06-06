@@ -1,5 +1,7 @@
 import React, { useContext, Suspense } from 'react'
 import { NavBar } from '../src/components/NavBar'
+import { Footer } from '../src/components/Footer'
+
 // Pages
 import { NotFound } from '../src/pages/NotFound'
 import { Home } from '../src/pages/Home'
@@ -20,6 +22,7 @@ export const App = () => {
         {!isAuth && <Signup path='/signup' />}
         {isAuth && <Redirect from='/login' to='/' noThrow />}
       </Router>
+      {/* <Footer /> */}
       {/* <Router>
         <Home path='/pet/:id' />
         <Detail path='detail/:detailId' />
