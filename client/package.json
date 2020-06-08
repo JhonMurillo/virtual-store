@@ -24,7 +24,9 @@
     "react-loading-skeleton": "^2.0.1",
     "react-number-format": "^4.4.1",
     "react-rating": "^2.0.5",
+    "react-render-html": "^0.6.0",
     "react-scripts": "3.4.1",
+    "react-show-more-text": "^1.4.2",
     "reactstrap": "^8.4.1",
     "styled-components": "^5.1.0"
   },

@@ -3,7 +3,13 @@ import { CardStore } from '../CardStories';
 import { CardDeck, Paginate } from './styles';
 import { Row, Col } from 'reactstrap';
 
-export const ListOfStores = ({ stores = [], metadata = {}, limit, onChangePagination, activePage }) => {
+export const ListOfStores = ({
+  stores = [],
+  metadata = {},
+  limit,
+  onChangePagination,
+  activePage,
+}) => {
   if (stores.length === 0) {
     return <h1>No hay Tiendas :(</h1>;
   } else {

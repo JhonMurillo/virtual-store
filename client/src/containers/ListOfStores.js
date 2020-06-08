@@ -4,6 +4,7 @@ import { useApolloClient } from 'react-apollo';
 import { Loading } from '../components/Loading';
 import { Error } from '../components/Error';
 import { SearchInput } from '../components/SearchBar';
+import { Modal } from '../components/Modal';
 
 import { ListOfStores as ListOfStoresComponent } from '../components/ListOfStores';
 
@@ -16,6 +17,7 @@ export const ListOfStores = () => {
   const [metadata, setMetadata] = useState({});
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
+  const [openModal, setOpenModal] = useState(true);
 
   const GET_STORES = gql`
     query getStores($filter: String, $offset: Int, $limit: Int) {
@@ -100,6 +102,7 @@ export const ListOfStores = () => {
 
   return (
     <>
+      <Modal isOpen={openModal} onToggle={()=>{setOpenModal(!openModal)}} />
       <SearchInput onClick={onSearch} onChange={onGetFilter} />
       <hr />
       {loading && <Loading IsSkeleton={true} colsSkeleton={10} />}

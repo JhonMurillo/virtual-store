@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CardBody, Button } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import { CardDiv, CardTitle, CardText } from './styles';
@@ -6,6 +6,8 @@ import { Link } from '@reach/router';
 import { SocialNetwork } from '../SocialNetwork';
 import Rating from 'react-rating';
 import { BsStar, BsStarFill } from 'react-icons/bs';
+import ShowMoreText from 'react-show-more-text';
+import renderHTML from 'react-render-html';
 
 const default_description =
   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
@@ -19,10 +21,18 @@ export const CardStore = ({
   is_feature = true,
   rating,
 }) => {
+  description = description || default_description;
+  const [information, setInformation] = useState(description);
+  const onToggleMoreText = (expanded) => {
+    if (expanded) {
+      setInformation(renderHTML(information));
+    } else {
+      setInformation(description);
+    }
+  };
   return (
     <>
       <CardDiv is_feature={is_feature ? 1 : 0}>
-        {/* <CardImg top width="100%" src={main_image} alt={name} /> */}
         <CardBody>
           <Container>
             <Row>
@@ -36,7 +46,17 @@ export const CardStore = ({
                   emptySymbol={<BsStar />}
                   fullSymbol={<BsStarFill />}
                 />
-                <CardText>{description || default_description}</CardText>
+                <div>
+                  <ShowMoreText
+                    lines={4}
+                    more="Mostrar mas"
+                    less="Mostrar menos"
+                    onClick={onToggleMoreText}
+                    expanded={false}
+                  >
+                    {information}
+                  </ShowMoreText>
+                </div>
               </Col>
             </Row>
             <hr />
